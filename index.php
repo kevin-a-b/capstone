@@ -24,9 +24,10 @@
 
 
 include("classes/config.php");
-
 $Config = new Config();
 
+$Users = new MainData();
+$Users->GetUsers();
 
 
 ?>
@@ -34,5 +35,19 @@ $Config = new Config();
 <html>
     <body>
         <h1>Hello World</h1>
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>user_name</th>
+            </thead>
+            <tbody>
+            <? while($Users->next_record()){ ?>
+                <tr>
+                    <td> <?= $Users->f("account_id") ?> </td>
+                    <td> <?= $Users->f("user_name") ?> </td>
+                </tr>
+            <? } ?>
+            </tbody>
+        </table>
     </body>
 </html>
