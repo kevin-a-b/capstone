@@ -1,35 +1,33 @@
 <?php
 //var_dump($_SERVER);
-//$dbhost = $_SERVER['aa1g1tnfvy31umg.cqupwsiydadl.us-east-2.rds.amazonaws.com'];
-//$dbport = $_SERVER['3306'];
-//$dbname = $_SERVER['ebdb'];
-//$charset = 'utf8' ;
+
+//$host = 'aa1g1tnfvy31umg.cqupwsiydadl.us-east-2.rds.amazonaws.com';
+//$dbname = 'ebdb';
+//$port = 3306;
+//$username = 'capstone';
+//$password = 'password';
 //
-//$dsn = "mysql:host={$dbhost};port={$dbport};dbname={$dbname};charset={$charset}";
-//$username = $_SERVER['capstone'];
-//$password = $_SERVER['password'];
+//$link = new mysqli($host, $username, $password, $dbname, $port);
 //
-//$pdo = new PDO($dsn, $username, $password);
-$host = 'aa1g1tnfvy31umg.cqupwsiydadl.us-east-2.rds.amazonaws.com';
-$dbname = 'ebdb';
-$port = 3306;
-$username = 'capstone';
-$password = 'password';
+//if ($link -> connect_errno) {
+//    echo "Failed to connect to MySQL: " . $link -> connect_error;
+//    exit();
+//}
+//
+//if ($result = $link -> query("select * from user_account")) {
+//    echo "Returned rows are: " . $result -> num_rows;
+//    // Free result set
+//    $result -> free_result();
+//}
+//
+//$link -> close();
 
-$link = new mysqli($host, $username, $password, $dbname, $port);
 
-if ($link -> connect_errno) {
-    echo "Failed to connect to MySQL: " . $link -> connect_error;
-    exit();
-}
+include("classes/config.php");
 
-if ($result = $link -> query("select * from user_account")) {
-    echo "Returned rows are: " . $result -> num_rows;
-    // Free result set
-    $result -> free_result();
-}
+$Config = new Config();
 
-$link -> close();
+
 
 ?>
 
