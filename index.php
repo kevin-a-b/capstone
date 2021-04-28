@@ -35,6 +35,7 @@ $Users->GetUsers();
 <html>
     <body>
         <h1>Hello World</h1>
+        <h1>Luke's Edit</h1>
         <table>
             <thead>
                 <th>ID</th>
