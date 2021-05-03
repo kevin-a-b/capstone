@@ -5,7 +5,7 @@ class MainData extends DB_Sql
 {
 
     function GetUsers(){
-        $queryString = "select * from user_account";
+        $queryString = "select * from User_Account";
         $this->query($queryString);
     }
 
