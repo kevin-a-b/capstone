@@ -26,9 +26,9 @@
 include("classes/config.php");
 $Config = new Config();
 
-$Users = new MainData();
-$Users->GetUsers();
-
+//$Users = new MainData();
+//$Users->GetUsers();
+http_response_code(200);
 
 ?>
 
