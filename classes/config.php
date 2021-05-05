@@ -1,7 +1,9 @@
 <?php
-
+echo "\n\ntop of config file\n\n";
 include("classes/db_mysqli.php");
+echo "\n\nafter db_mysqli include\n\n";
 include("classes/main_data.php");
+echo "\n\nafter main_data include\n\n";
 
 class Config
 {
