@@ -1,10 +1,10 @@
 <?php
 
-//include("classes/config.php");
-//$Config = new Config();
+include("classes/config.php");
+$Config = new Config();
 
-//$Users = new MainData();
-//$Users->GetUsers();
+$Users = new MainData();
+$Users->GetUsers();
 
 //$json_users = [];
 
