@@ -3,8 +3,8 @@
 include("classes/config.php");
 $Config = new Config();
 
-$Users = new MainData();
-$Users->GetUsers();
+//$Users = new MainData();
+//$Users->GetUsers();
 
 //$json_users = [];
 
@@ -20,15 +20,15 @@ http_response_code(202);    // OK
 //    )
 //);
 
-$arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
-
-echo json_encode($arr);
+//$arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
+//
+//echo json_encode($arr);
 
 
 ?>
 
-<html>
+<html lang="en">
     <body>
-        <h1>Hello World</h1>
+        <h1>get_users.php</h1>
     </body>
 </html>

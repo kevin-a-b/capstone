@@ -10,7 +10,7 @@ http_response_code(202);
 
 ?>
 
-<html>
+<html lang="en">
     <body>
         <h1>Hello World</h1>
         <h1>Luke's Edit</h1>
