@@ -12,7 +12,7 @@ class Config
     var $DatabaseUsername;
     var $DatabasePassword;
 
-    function __construct()
+    public function __construct()
     {
         $this->DatabaseServer   = "aa1g1tnfvy31umg.cqupwsiydadl.us-east-2.rds.amazonaws.com";
         $this->DatabaseName = "ebdb";
