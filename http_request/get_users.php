@@ -3,23 +3,23 @@
 include("classes/config.php");
 $Config = new Config();
 
-$Users = new MainData();
-$Users->GetUsers();
+//$Users = new MainData();
+//$Users->GetUsers();
 
 $json_users = [];
 
-while($Users->next_record()){
-    array_push($json_users, array('id' => $Users->f('Account_ID'), 'user_name' => $Users->f('Account_Username')));
-}
+//while($Users->next_record()){
+//    array_push($json_users, array('id' => $Users->f('Account_ID'), 'user_name' => $Users->f('Account_Username')));
+//}
 
-http_response_code(200);    // OK
+http_response_code(202);    // OK
 
-echo json_encode(
-    array(
-        "users" => $json_users
-    )
-);
+//echo json_encode(
+//    array(
+//        "users" => $json_users
+//    )
+//);
 
+$arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
 
-//account_id
-//user_name
+echo json_encode($arr);
