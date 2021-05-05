@@ -1,7 +1,7 @@
 <?php
 
 include("classes/config.php");
-//$Config = new Config();
+$Config = new Config();
 
 //$Users = new MainData();
 //$Users->GetUsers();
