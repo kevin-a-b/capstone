@@ -1,7 +1,7 @@
 <?php
 
 include("classes/db_mysqli.php");
-include("main_data.php");
+include("classes/main_data.php");
 
 class Config
 {
