@@ -23,3 +23,12 @@ http_response_code(202);    // OK
 $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
 
 echo json_encode($arr);
+
+
+?>
+
+<html>
+    <body>
+        <h1>Hello World</h1>
+    </body>
+</html>
