@@ -1,12 +1,12 @@
 <?php
 
-include("classes/config.php");
-$Config = new Config();
+//include("classes/config.php");
+//$Config = new Config();
 
 //$Users = new MainData();
 //$Users->GetUsers();
 
-$json_users = [];
+//$json_users = [];
 
 //while($Users->next_record()){
 //    array_push($json_users, array('id' => $Users->f('Account_ID'), 'user_name' => $Users->f('Account_Username')));
