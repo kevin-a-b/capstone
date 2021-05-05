@@ -28,7 +28,7 @@ $Config = new Config();
 
 $Users = new MainData();
 $Users->GetUsers();
-http_response_code(200);
+//http_response_code(200);
 
 ?>
 
@@ -44,8 +44,8 @@ http_response_code(200);
             <tbody>
             <? while($Users->next_record()){ ?>
                 <tr>
-                    <td> <?= $Users->f("account_id") ?> </td>
-                    <td> <?= $Users->f("user_name") ?> </td>
+                    <td> <?= $Users->f("Account_ID") ?> </td>
+                    <td> <?= $Users->f("Account_Username") ?> </td>
                 </tr>
             <? } ?>
             </tbody>
