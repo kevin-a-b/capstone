@@ -28,7 +28,7 @@ $Config = new Config();
 
 $Users = new MainData();
 $Users->GetUsers();
-//http_response_code(200);
+http_response_code(202);
 
 ?>
 
@@ -52,3 +52,9 @@ $Users->GetUsers();
         </table>
     </body>
 </html>
+
+<?php
+
+$arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
+
+echo json_encode($arr);
