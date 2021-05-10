@@ -5,7 +5,7 @@ $Config = new Config();
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-var_dump($data);
+//var_dump($data);
 
 if(isset($data['Account_Username']) && isset($data['Account_Password_Hashcode'])
     && isset($data['Public_Key']) && isset($data['Private_Key'])){
@@ -27,8 +27,5 @@ if($CreateUser->num_rows() == 0){
     return;
 }
 
-$arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
-echo json_encode($arr);
-
-http_response_code(201); //Accepted
+http_response_code(201); // Created
 return;
