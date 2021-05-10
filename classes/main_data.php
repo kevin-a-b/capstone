@@ -72,4 +72,32 @@ class MainData extends DB_Sql
         $this->next_record();
     }
 
+    function ViewMessages($conversation_id, $num_messages){
+        $queryString = "SELECT 
+                           acc.Account_Username,
+                           m.Sent_Date_And_Time,
+                           m.Message_Ciphertext
+                        FROM
+                            Message m
+                                JOIN
+                            User_Account acc ON acc.Account_ID = m.Sender_Account_ID
+                        WHERE
+                            m.Conversation_ID = $conversation_id
+                        ORDER BY m.Sent_Date_And_Time DESC
+                        LIMIT $num_messages;";
+        $this->query($queryString);
+    }
+
+    function GetConversationPrivateKey($conversation_id, $account_id){
+        $queryString = "SELECT 
+                            Conversation_Private_Key
+                        FROM
+                            Conversation_Participant
+                        WHERE
+                            Conversation_ID = $conversation_id 
+                            AND Account_ID = $account_id;";
+        $this->query($queryString);
+        $this->next_record();
+    }
+
 }
