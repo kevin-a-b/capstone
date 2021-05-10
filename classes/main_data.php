@@ -100,4 +100,15 @@ class MainData extends DB_Sql
         $this->next_record();
     }
 
+    function GetPublicKeyByUsername($username){
+        $queryString = "SELECT 
+                            Public_Key
+                        FROM
+                            User_Account
+                        WHERE
+                            Account_Username = '$username';";
+        $this->query($queryString);
+        $this->next_record();
+    }
+
 }

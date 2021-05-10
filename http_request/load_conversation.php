@@ -36,7 +36,7 @@ $conv_private_key = $ConversationPrivateKey->f('Conversation_Private_Key');
 
 http_response_code(200); // OK
 
-json_encode(
+echo json_encode(
     array(
         'TaskRequested' => 'LOAD_MOST_RECENT_MESSAGES_AND_PRIVATE_KEY',
         'ResultOfRequest' => 'SUCCESS',
