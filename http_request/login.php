@@ -13,15 +13,44 @@ if(isset($data['Account_Username']) && isset($data['Account_Password_Hashcode'])
     return;
 }
 
-$CheckUser = new MainData();
-$CheckUser->CheckUsernameAndPassword($username, $password_hash);
+$CheckUsername = new MainData();
+$CheckUsername->CheckUsernameExists($username);
+if($CheckUsername->num_rows() == 0){
+    http_response_code(404); // Not Found
+    echo json_encode(
+        array(
+            'TaskRequested' => 'LOG_INTO_ACCOUNT',
+            'ResultOfRequest' => 'USERNAME_DOES_NOT_EXIST',
+            'Account_ID' => 0,
+            'Public_Key' => NULL,
+            'Private_Key' => NULL,
+            'IDsOfConversationsUserIsParticipating' => NULL,
+            'ConversationInvitations' => NULL
+        )
+    );
+    return;
+}
 
-if($CheckUser->num_rows() == 0){
-    http_response_code(400); // Bad Request
+$CheckPassword = new MainData();
+$CheckPassword->CheckUsernameAndPassword($username, $password_hash);
+
+if($CheckPassword->num_rows() == 0){
+    http_response_code(401); // Unauthorized
+    echo json_encode(
+        array(
+            'TaskRequested' => 'LOG_INTO_ACCOUNT',
+            'ResultOfRequest' => 'PASSWORDS_DO_NOT_MATCH',
+            'Account_ID' => 0,
+            'Public_Key' => NULL,
+            'Private_Key' => NULL,
+            'IDsOfConversationsUserIsParticipating' => NULL,
+            'ConversationInvitations' => NULL
+        )
+    );
 }else{
-    $account_id = $CheckUser->f('Account_ID');
-    $public_key = $CheckUser->f('Public_Key');
-    $private_key = $CheckUser->f('Private_Key');
+    $account_id = $CheckPassword->f('Account_ID');
+    $public_key = $CheckPassword->f('Public_Key');
+    $private_key = $CheckPassword->f('Private_Key');
 
     $GetConversations = new MainData();
     $GetConversations->GetConversationIDs($account_id);
@@ -45,6 +74,8 @@ if($CheckUser->num_rows() == 0){
     http_response_code(200); // OK
     echo json_encode(
         array(
+            'TaskRequested' => 'LOG_INTO_ACCOUNT',
+            'ResultOfRequest' => 'LOGIN_SUCCESSFUL',
             'Account_ID' => $account_id,
             'Public_Key' => $public_key,
             'Private_Key' => $private_key,

@@ -17,5 +17,15 @@ if(isset($data['Account_ID']) && isset($data['Conversation_Private_Key'])){
 
 $CreateConversation = new MainData();
 $CreateConversation->CreateNewConversation();
+$CreateConversation->LastInsertID();
+$conversation_id = $CreateConversation->f('LAST_INSERT_ID()');
 
-$conversation_id = $CreateConversation->f('Conversation_ID');
+http_response_code(201); // Created
+
+json_encode(
+    array(
+        'Conversation_ID' => $conversation_id
+    )
+);
+
+return;

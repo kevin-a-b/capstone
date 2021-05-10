@@ -64,7 +64,12 @@ class MainData extends DB_Sql
     function CreateNewConversation(){
         $queryString = "INSERT INTO `Conversation` VALUES ();";
         $this->query($queryString);
+    }
 
+    function LastInsertID(){
+        $queryString = "SELECT LAST_INSERT_ID();";
+        $this->query($queryString);
+        $this->next_record();
     }
 
 }
