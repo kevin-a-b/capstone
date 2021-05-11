@@ -79,7 +79,7 @@ if($CheckPassword->num_rows() == 0){
             'Account_ID' => $account_id,
             'Public_Key' => $public_key,
             'Private_Key' => $private_key,
-            'IDsOfConversationsUserIsParticipating' => $conversation_ids,
+            'IDsOfConversationsUserIsParticipantIn' => $conversation_ids,
             'ConversationInvitations' => $invitations
         )
     );
