@@ -20,6 +20,9 @@ $CreateConversation->CreateNewConversation();
 $CreateConversation->LastInsertID();
 $conversation_id = $CreateConversation->f('LAST_INSERT_ID()');
 
+$CreateConversationParticipant = new MainData();
+$CreateConversationParticipant->AddConversationParticipant($conversation_id, $account_id, $conv_private_key);
+
 http_response_code(201); // Created
 
 json_encode(
