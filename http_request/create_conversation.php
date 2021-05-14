@@ -27,7 +27,7 @@ $CreateConversationParticipant->AddConversationParticipant($conversation_id, $ac
 
 http_response_code(201); // Created
 
-json_encode(
+echo json_encode(
     array(
         'TaskRequested' => 'CREATE_NEW_CONVERSATION',
         'ResultOfRequest' => 'CONVERSATION_CREATION_SUCCESSFUL',
