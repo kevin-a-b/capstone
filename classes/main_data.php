@@ -115,7 +115,7 @@ class MainData extends DB_Sql
         $queryString = "INSERT INTO `Conversation_Participant`
                         (`Conversation_ID`, `Account_ID`, `Conversation_Private_Key`)
                         VALUES
-                        ($conversation_id, $account_id, $conv_private_key);";
+                        ($conversation_id, $account_id, '$conv_private_key');";
         $this->query($queryString);
     }
 
