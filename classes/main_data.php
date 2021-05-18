@@ -119,4 +119,45 @@ class MainData extends DB_Sql
         $this->query($queryString);
     }
 
+    function CheckIfConversationParticipantExists($conversation_id, $recipient_username){
+        $queryString = "SELECT 
+                            *
+                        FROM
+                            Conversation_Participant conv_part
+                                JOIN
+                            User_Account ua ON ua.Account_ID = conv_part.Account_ID
+                        WHERE
+                            conv_part.Conversation_ID = $conversation_id
+                                AND ua.Account_Username = '$recipient_username';";
+        $this->query($queryString);
+    }
+
+    function InsertConversationInvitation($conversation_id, $recipient_username, $sender_account_id, $conversation_private_key){
+        $queryString = "INSERT INTO `Pending_Conversation_Invitation`
+                        (`Conversation_ID`,
+                        `Recipient_Account_ID`,
+                        `Sender_Account_ID`,
+                        `Conversation_Private_Key`)
+                        VALUES
+                        ($conversation_id, (SELECT Account_ID FROM User_Account WHERE Account_Username = '$recipient_username'), $sender_account_id,
+                         '$conversation_private_key');";
+        $this->query($queryString);
+    }
+
+    function GetNewConversationInvitaions($conv_id_start, $recipient_account_id){
+        $queryString = "SELECT 
+                            inv.Conversation_ID conv_id,
+                            ua.Account_Username sender_username
+                        FROM
+                            Pending_Conversation_Invitation inv
+                                JOIN
+                            User_Account ua ON ua.Account_ID = inv.Sender_Account_ID
+                        WHERE
+                            inv.Recipient_Account_ID = $recipient_account_id
+                                AND inv.Conversation_ID > $conv_id_start;";
+        $this->query($queryString);
+    }
+
+
+
 }
