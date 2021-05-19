@@ -43,7 +43,7 @@ echo json_encode(
         'Account_ID' => $account_id,
         'Messages' => $messages,
         'Conversation_Private_Key' => $conv_private_key
-    )
+    ), JSON_UNESCAPED_SLASHES
 );
 
 return;

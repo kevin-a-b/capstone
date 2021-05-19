@@ -14,7 +14,7 @@ if(isset($data['Account_ID']) && isset($data['StartingConversationIdInclusive'])
 }
 
 $NewInvitations = new MainData();
-$NewInvitations->GetNewConversationInvitaions($conv_id_start, $account_id);
+$NewInvitations->GetNewConversationInvitations($conv_id_start, $account_id);
 
 $invitations = array();
 while($NewInvitations->next_record()){
@@ -31,7 +31,7 @@ echo json_encode(
         'TaskRequested' => 'LOAD_ANY_NEW_INVITATIONS',
         'ResultOfRequest' => 'SUCCESS',
         'ConversationInvitations' => $invitations
-    )
+    ), JSON_UNESCAPED_SLASHES
 );
 return;
 

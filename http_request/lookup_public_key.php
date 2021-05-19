@@ -35,7 +35,7 @@ if($GetPublicKey->num_rows() == 0){
             'ResultOfRequest' => 'SUCCESS',
             'Account_Username' => $username,
             'Public_Key' => $public_key
-        )
+        ), JSON_UNESCAPED_SLASHES
     );
 }
 return;

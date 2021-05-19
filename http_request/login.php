@@ -26,7 +26,7 @@ if($CheckUsername->num_rows() == 0){
             'Private_Key' => NULL,
             'IDsOfConversationsUserIsParticipating' => NULL,
             'ConversationInvitations' => NULL
-        )
+        ), JSON_UNESCAPED_SLASHES
     );
     return;
 }
@@ -45,7 +45,7 @@ if($CheckPassword->num_rows() == 0){
             'Private_Key' => NULL,
             'IDsOfConversationsUserIsParticipating' => NULL,
             'ConversationInvitations' => NULL
-        )
+        ), JSON_UNESCAPED_SLASHES
     );
 }else{
     $account_id = $CheckPassword->f('Account_ID');
@@ -81,7 +81,7 @@ if($CheckPassword->num_rows() == 0){
             'Private_Key' => $private_key,
             'IDsOfConversationsUserIsParticipantIn' => $conversation_ids,
             'ConversationInvitations' => $invitations
-        )
+        ), JSON_UNESCAPED_SLASHES
     );
 }
 return;

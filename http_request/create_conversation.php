@@ -34,7 +34,7 @@ echo json_encode(
         'Account_ID' => $account_id,
         'Conversation_Private_Key' => $conv_private_key,
         'Conversation_ID' => $conversation_id
-    )
+    ), JSON_UNESCAPED_SLASHES
 );
 
 return;

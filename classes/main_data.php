@@ -144,7 +144,7 @@ class MainData extends DB_Sql
         $this->query($queryString);
     }
 
-    function GetNewConversationInvitaions($conv_id_start, $recipient_account_id){
+    function GetNewConversationInvitations($conv_id_start, $recipient_account_id){
         $queryString = "SELECT 
                             inv.Conversation_ID conv_id,
                             ua.Account_Username sender_username
