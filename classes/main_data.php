@@ -158,6 +158,75 @@ class MainData extends DB_Sql
         $this->query($queryString);
     }
 
+    function AddConversationParticipantWithoutPrivateKeyParameter($conv_id, $account_id){
+        $queryString = "INSERT INTO `Conversation_Participant`
+                        (`Conversation_ID`,
+                        `Account_ID`,
+                        `Conversation_Private_Key`)
+                        VALUES
+                        ($conv_id, $account_id, 
+                        (SELECT Conversation_Private_Key
+                        FROM
+                            Pending_Conversation_Invitation
+                        WHERE
+                            Conversation_ID = $conv_id
+                                AND Recipient_Account_ID = $account_id));";
+        $this->query($queryString);
+    }
+
+    function DeleteOldPendingInvitation($conv_id, $account_id){
+        $queryString = "DELETE FROM `Pending_Conversation_Invitation` 
+                        WHERE
+                            Conversation_ID = $conv_id
+                            AND Recipient_Account_ID = $account_id;";
+                                $this->query($queryString);
+    }
+
+    function IncreaseConversationMessageCount($conv_id){
+        $queryString = "UPDATE `Conversation` 
+                        SET 
+                            `Total_Number_Of_Messages` = `Total_Number_Of_Messages` + 1
+                        WHERE
+                            `Conversation_ID` = $conv_id;";
+        $this->query($queryString);
+    }
+
+    function GetCurrentMessageCount($conv_id){
+        $queryString = "SELECT 
+                            Total_Number_Of_Messages
+                        FROM
+                            Conversation
+                        WHERE
+                            Conversation_ID = $conv_id;";
+        $this->query($queryString);
+        $this->next_record();
+    }
+
+    function InsertNewMessage($message_count, $conv_id, $message_cipher, $account_id, $date_time){
+        $queryString = "INSERT INTO `Message`
+                        (`Message_Number`, `Conversation_ID`, `Message_Ciphertext`,
+                        `Sender_Account_ID`, `Sent_Date_And_Time`)
+                        VALUES
+                        ($message_count, $conv_id, '$message_cipher', $account_id, '$date_time');";
+        $this->query($queryString);
+    }
+
+    function GetMessages($conv_id, $start_num_inclusive, $end_num_inclusive){
+        $queryString = "SELECT 
+                            m.Message_Ciphertext message_cipher,
+                            ua.Account_Username sender_username,
+                            m.Sent_Date_And_Time date_time
+                        FROM
+                            Message m
+                                JOIN
+                            User_Account ua ON ua.Acocunt_ID = m.Sender_Account_ID
+                        WHERE
+                            m.Conversation_ID = $conv_id
+                                AND m.MessageNumber >= $start_num_inclusive
+                                AND m.MessageNumber <= $end_num_inclusive;";
+        $this->query($queryString);
+    }
+
 
 
 }

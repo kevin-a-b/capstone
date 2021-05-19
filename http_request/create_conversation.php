@@ -13,13 +13,8 @@ if(isset($data['Account_ID']) && isset($data['Conversation_Private_Key'])){
     return;
 }
 
-// create conversation
-
 $CreateConversation = new MainData();
 $CreateConversation->CreateNewConversation();
-
-//last insert id not working, causing 500 internal server error
-//$CreateConversation->LastInsertID();
 $conversation_id = $CreateConversation->insert_id();
 
 $CreateConversationParticipant = new MainData();
