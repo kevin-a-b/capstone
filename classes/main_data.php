@@ -154,7 +154,7 @@ class MainData extends DB_Sql
                             User_Account ua ON ua.Account_ID = inv.Sender_Account_ID
                         WHERE
                             inv.Recipient_Account_ID = $recipient_account_id
-                                AND inv.Conversation_ID > $conv_id_start;";
+                                AND inv.Conversation_ID >= $conv_id_start;";
         $this->query($queryString);
     }
 
