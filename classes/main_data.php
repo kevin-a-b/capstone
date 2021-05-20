@@ -179,7 +179,7 @@ class MainData extends DB_Sql
                         WHERE
                             Conversation_ID = $conv_id
                             AND Recipient_Account_ID = $account_id;";
-                                $this->query($queryString);
+        $this->query($queryString);
     }
 
     function IncreaseConversationMessageCount($conv_id){

@@ -6,7 +6,8 @@ $Config = new Config();
 $data = json_decode(file_get_contents('php://input'), true);
 
 if(isset($data['Account_ID']) && isset($data['Conversation_ID'])
-    && isset($data['StartingMessageNumberInclusive']) && isset($data['EndingMessageNumberInclusive'])){
+    && isset($data['StartingMessageNumberInclusive'])
+    && isset($data['EndingMessageNumberInclusive'])){
     $account_id = $data['Account_ID'];
     $conv_id = $data['Conversation_ID'];
     $start_num_inclusive = $data['StartingMessageNumberInclusive'];
@@ -24,8 +25,7 @@ while($Messages->next_record()){
     $m = $Messages->f('message_cipher');
     $sender_username = $Messages->f('sender_username');
     $date_time = $Messages->f('date_time');
-    array_push($messages,
-                                array(
+    array_push($messages, array(
                                     'MessageSenderUsername' => $sender_username,
                                     'TimeAndDateMessageWasSent' => $date_time,
                                     'MessageBody' => $m
