@@ -193,7 +193,7 @@ class MainData extends DB_Sql
 
     function GetCurrentMessageCount($conv_id){
         $queryString = "SELECT 
-                            Total_Number_Of_Messages
+                            Total_Number_Of_Messages num_messages
                         FROM
                             Conversation
                         WHERE

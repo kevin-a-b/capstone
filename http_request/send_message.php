@@ -20,7 +20,7 @@ $IncreaseMessageCount = new MainData();
 $IncreaseMessageCount->IncreaseConversationMessageCount($conv_id);
 
 $IncreaseMessageCount->GetCurrentMessageCount($conv_id);
-$message_count = $IncreaseMessageCount->f('Total_Number_Of_Messages');
+$message_count = $IncreaseMessageCount->f('num_messages');
 
 $InsertMessage = new MainData();
 $InsertMessage->InsertNewMessage($message_count, $conv_id, $message_cipher, $account_id, $date_time);
