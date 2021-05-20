@@ -211,7 +211,7 @@ class MainData extends DB_Sql
         $this->query($queryString);
     }
 
-    function GetMessages($conv_id, $start_num_inclusive, $end_num_inclusive){
+    function GetMessagesInRange($conv_id, $start_num_inclusive, $end_num_inclusive){
         $queryString = "SELECT 
                             m.Message_Ciphertext message_cipher,
                             ua.Account_Username sender_username,
@@ -224,6 +224,21 @@ class MainData extends DB_Sql
                             m.Conversation_ID = $conv_id
                                 AND m.MessageNumber >= $start_num_inclusive
                                 AND m.MessageNumber <= $end_num_inclusive;";
+        $this->query($queryString);
+    }
+
+    function GetNewMessages($conv_id, $start_num_inclusive){
+        $queryString = "SELECT 
+                            m.Message_Ciphertext message_cipher,
+                            ua.Account_Username sender_username,
+                            m.Sent_Date_And_Time date_time
+                        FROM
+                            Message m
+                                JOIN
+                            User_Account ua ON ua.Acocunt_ID = m.Sender_Account_ID
+                        WHERE
+                            m.Conversation_ID = $conv_id
+                                AND m.MessageNumber >= $start_num_inclusive;";
         $this->query($queryString);
     }
 
