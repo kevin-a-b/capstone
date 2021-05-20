@@ -19,8 +19,9 @@ if(isset($data['Sender_Account_ID']) && isset($data['Conversation_ID'])
 $IncreaseMessageCount = new MainData();
 $IncreaseMessageCount->IncreaseConversationMessageCount($conv_id);
 
-$IncreaseMessageCount->GetCurrentMessageCount($conv_id);
-$message_count = $IncreaseMessageCount->f('num_messages');
+$GetMessageCount = new MainData();
+$GetMessageCount->GetCurrentMessageCount($conv_id);
+$message_count = $GetMessageCount->f('num_messages');
 
 $InsertMessage = new MainData();
 $InsertMessage->InsertNewMessage($message_count, $conv_id, $message_cipher, $account_id, $date_time);
