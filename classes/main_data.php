@@ -224,7 +224,7 @@ class MainData extends DB_Sql
                             m.Conversation_ID = $conv_id
                                 AND m.Message_Number >= $start_num_inclusive
                                 AND m.Message_Number <= $end_num_inclusive
-                        ORDER BY m.Message_Number ASC;";
+                        ORDER BY m.Message_Number DESC;";
         $this->query($queryString);
     }
 
@@ -240,7 +240,7 @@ class MainData extends DB_Sql
                         WHERE
                             m.Conversation_ID = $conv_id
                                 AND m.Message_Number >= $start_num_inclusive
-                        ORDER BY m.Message_Number ASC;";
+                        ORDER BY m.Message_Number DESC;";
         $this->query($queryString);
     }
 
