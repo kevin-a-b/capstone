@@ -213,7 +213,7 @@ class MainData extends DB_Sql
 
     function GetMessagesInRange($conv_id, $start_num_inclusive, $end_num_inclusive){
         $queryString = "SELECT 
-                            m.Message_Number,
+                            m.Message_Number message_num,
                             m.Message_Ciphertext message_cipher,
                             ua.Account_Username sender_username,
                             m.Sent_Date_And_Time date_time
@@ -231,7 +231,7 @@ class MainData extends DB_Sql
 
     function GetNewMessages($conv_id, $start_num_inclusive){
         $queryString = "SELECT 
-                            m.Message_Number,
+                            m.Message_Number message_num,
                             m.Message_Ciphertext message_cipher,
                             ua.Account_Username sender_username,
                             m.Sent_Date_And_Time date_time
