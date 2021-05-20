@@ -219,11 +219,11 @@ class MainData extends DB_Sql
                         FROM
                             Message m
                                 JOIN
-                            User_Account ua ON ua.Acocunt_ID = m.Sender_Account_ID
+                            User_Account ua ON ua.Account_ID = m.Sender_Account_ID
                         WHERE
                             m.Conversation_ID = $conv_id
-                                AND m.MessageNumber >= $start_num_inclusive
-                                AND m.MessageNumber <= $end_num_inclusive;";
+                                AND m.Message_Number >= $start_num_inclusive
+                                AND m.Message_Number <= $end_num_inclusive;";
         $this->query($queryString);
     }
 
