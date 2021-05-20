@@ -83,7 +83,7 @@ class MainData extends DB_Sql
                             User_Account acc ON acc.Account_ID = m.Sender_Account_ID
                         WHERE
                             m.Conversation_ID = $conversation_id
-                        ORDER BY m.Sent_Date_And_Time DESC
+                        ORDER BY m.Sent_Date_And_Time ASC
                         LIMIT $num_messages;";
         $this->query($queryString);
     }
