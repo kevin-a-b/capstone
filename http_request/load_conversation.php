@@ -28,9 +28,10 @@ $Messages->GetNewMessages($conversation_id, $message_start);
 
 $messages = array();
 while($Messages->next_record()){
-    $sender = $Messages->f('Account_Username');
-    $datetime = $Messages->f('Sent_Date_And_Time');
-    $message_ciphertext = $Messages->f('Message_Ciphertext');
+    $num = $Messages->f('message_num');
+    $sender = $Messages->f('sender_username');
+    $datetime = $Messages->f('date_time');
+    $message_ciphertext = $Messages->f('message_cipher');
     array_push($messages,
     array(
         'MessageSenderUsername' => $sender,
