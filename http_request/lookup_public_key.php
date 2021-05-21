@@ -23,7 +23,7 @@ if($GetPublicKey->num_rows() == 0){
             'ResultOfRequest' => 'USERNAME_NOT_FOUND',
             'Account_Username' => $username,
             'Public_Key' => NULL
-        )
+        ), JSON_UNESCAPED_SLASHES
     );
 }else{
     $public_key = $GetPublicKey->f('Public_Key');
