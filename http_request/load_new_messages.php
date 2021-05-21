@@ -24,7 +24,7 @@ while($Messages->next_record()){
     $sender_username = $Messages->f('sender_username');
     $date_time = $Messages->f('date_time');
     $m_num = $Messages->f('message_num');
-    array_push($messages, array(
+    array_push($messages_array, array(
         'Message_Number' => $m_num,
         'MessageSenderUsername' => $sender_username,
         'TimeAndDateMessageWasSent' => $date_time,
