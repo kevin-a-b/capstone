@@ -34,6 +34,7 @@ while($Messages->next_record()){
     $message_ciphertext = $Messages->f('message_cipher');
     array_push($messages,
     array(
+        'MessageNumber' => $num,
         'MessageSenderUsername' => $sender,
         'TimeAndDateMessageWasSent' => $datetime,
         'MessageBody' => $message_ciphertext
