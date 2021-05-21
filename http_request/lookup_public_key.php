@@ -16,7 +16,7 @@ $GetPublicKey = new MainData();
 $GetPublicKey->GetPublicKeyByUsername($username);
 
 if($GetPublicKey->num_rows() == 0){
-    http_response_code(404); // Not Found
+    http_response_code(200); // Not Found
     echo json_encode(
         array(
             'TaskRequested' => 'LOOKUP_PUBLIC_KEY',
