@@ -14,8 +14,17 @@ if(isset($data['Account_ID']) && isset($data['Conversation_ID']) && isset($data[
     return;
 }
 
+$GetMessageCount = new MainData();
+$GetMessageCount->GetCurrentMessageCount($conversation_id);
+$message_count = $GetMessageCount->f('num_messages');
+
+$message_start = $message_count - 25;
+
 $Messages = new MainData();
-$Messages->ViewMessages($conversation_id, $num_messages);
+$Messages->GetNewMessages($conversation_id, $message_start);
+
+//$Messages = new MainData();
+//$Messages->ViewMessages($conversation_id, $num_messages);
 
 $messages = array();
 while($Messages->next_record()){
