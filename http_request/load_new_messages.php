@@ -6,7 +6,7 @@ $Config = new Config();
 $data = json_decode(file_get_contents('php://input'), true);
 
 if(isset($data['Account_ID']) && isset($data['Conversation_ID'])
-    && isset($data['StartingMessageNumberInclusive']){
+    && isset($data['StartingMessageNumberInclusive'])){
     $account_id = $data['Account_ID'];
     $conv_id = $data['Conversation_ID'];
     $start_num_inclusive = $data['StartingMessageNumberInclusive'];
